@@ -1,0 +1,11 @@
+[package]
+name = "uart8250"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bitflags = { version = "2", default-features = false }
+lego_spec = { git = "https://github.com/lego-os/lego_spec", features = [
+    "driver",
+    "char",
+], branch = "main" }
