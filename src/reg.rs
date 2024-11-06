@@ -1,5 +1,5 @@
 use bitflags::bitflags;
-use tom_device::reg_map;
+use lego_spec::driver::reg_map;
 reg_map!(
     RBR 0,
     DLL 0,

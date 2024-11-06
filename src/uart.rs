@@ -2,7 +2,9 @@ use core::fmt::Write;
 
 use crate::{reg::*, UartConfig};
 
-use tom_device::{read_reg, write_reg, CharDevice, Device, DeviceError, DeviceStatus, DeviceType};
+use lego_spec::driver::{
+    read_reg, write_reg, CharDevice, Device, DeviceError, DeviceStatus, DeviceType,
+};
 #[derive(Debug)]
 pub struct Uart {
     base_address: usize,
@@ -88,6 +90,10 @@ impl CharDevice for Uart {
         while read_reg::<u8>(self.base_address, LSR) & 0x20 == 0 {}
         write_reg::<u8>(self.base_address, THR, ch);
         Ok(())
+    }
+
+    fn information(&self) -> &dyn lego_spec::driver::CharDevInfo {
+        todo!()
     }
 }
 
